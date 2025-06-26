@@ -1,0 +1,36 @@
+# Ignore build artifacts
+initramfs/*
+!initramfs.cpio.gz
+
+modules/*.o
+modules/*.ko
+modules/*.mod
+modules/*.mod.c
+modules/*.mod.o
+modules/*.cmd
+modules/.*.cmd
+modules/*.order
+modules/Module.symvers
+modules/.Module.symvers.cmd
+modules/.*.o
+modules/.*.ko
+modules/.*.mod.*
+modules/.tmp_versions/
+
+# Ignore the symlink to kernel headers
+modules/linux
+
+# Ignore compiled binaries
+modules/test
+bzImage
+
+# Ignore common temp and editor files
+*.log
+*.pid
+*~
+*.swp
+*.swo
+*.bak
+.DS_Store
+*.old
+
