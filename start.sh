@@ -8,15 +8,18 @@ cd modules
 make
 cd ..
 
-# 2. Move the kernel modules and the test binary into the initramfs directory
+# 2. Move the kernel modules and the test binaries into the initramfs directory
 echo "Moving modules and test binary to initramfs directory..."
-mv modules/*.ko initramfs/
-mv modules/test initramfs/
+cp modules/*/*.ko initramfs/modules
+for test_file in $(find modules -name "test_*" | grep -v "\..*$") ; do mv $test_file initramfs/tests ; done
 
 # 3. Rebuild the initramfs
 echo "Rebuilding initramfs..."
 ./rebuild-fs.sh
 
+# 4. Cleanup initramfs of unused files
+rm -rf initramfs/modules/*
+rm -rf initramfs/tests/*
 
 # 5. Start QEMU with the correct kernel and initramfs
 echo "Starting QEMU with the kernel and initramfs..."
