@@ -1,8 +1,8 @@
 # Define the object and module files
-obj-m += kernel_memory_explorer.o
+obj-m += kmem_explorer.o
 
 # The directory for the kernel build (dynamically determined)
-KDIR := /lib/modules/$(shell uname -r)/build
+KDIR := ~/Downloads/linux
 PWD := $(shell pwd)
 
 # Additional flags
@@ -18,8 +18,9 @@ modules:
 
 # Rule to build the test binary (static C program)
 test:
-	gcc -static -o test_kernel_memory_explorer test_kernel_memory_explorer.c
+	gcc -static -o test_kmem_explorer test_kmem_explorer.c
 
 # Clean target to remove build artifacts
 clean:
 	$(MAKE) -C $(KDIR) M=$(PWD) clean
+	rm -f test_kmem_explorer

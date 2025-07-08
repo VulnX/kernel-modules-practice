@@ -23,6 +23,7 @@ modules/linux
 # Ignore compiled binaries
 modules/test
 bzImage
+vmlinux
 
 # Ignore common temp and editor files
 *.log
@@ -34,3 +35,4 @@ bzImage
 .DS_Store
 *.old
 
+.gdb_history

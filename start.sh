@@ -27,5 +27,6 @@ qemu-system-x86_64 \
   -kernel ./bzImage \
   -cpu qemu64,+smep,+smap,+rdrand \
   -initrd ./initramfs.cpio.gz \
-  -append "console=ttyS0" \
-  -nographic
+  -append "console=ttyS0 nokaslr" \
+  -nographic \
+  -s
