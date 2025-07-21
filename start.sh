@@ -11,7 +11,7 @@ cd ..
 # 2. Move the kernel modules and the test binaries into the initramfs directory
 echo "Moving modules and test binary to initramfs directory..."
 cp modules/*/*.ko initramfs/modules
-for test_file in $(find modules -name "test_*" | grep -v "\..*$") ; do mv $test_file initramfs/tests ; done
+for test_file in $(find modules -name "test_*" | grep -v "\..*$") ; do cp $test_file initramfs/tests ; done
 
 # 3. Rebuild the initramfs
 echo "Rebuilding initramfs..."
